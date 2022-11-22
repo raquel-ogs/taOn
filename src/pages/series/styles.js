@@ -29,7 +29,7 @@ export const List = styled.ul`
 
 `
 
-export const Movie = styled.li`
+export const Serie = styled.li`
     display: flex;
     flex-direction: column;
     align-item: center;

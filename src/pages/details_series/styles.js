@@ -1,8 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  padding: 0 3rem;
-  
+
   h1{
     font-size: 55px;
     font-family: 'Agency FB';
@@ -10,25 +9,29 @@ export const Container = styled.div`
     letter-spacing: 0.05em;
     color: #00ACB7;
     margin: 3rem 0;
-}
+  }
 
-h2{
-  font-size: 45px;
-  font-family: 'Agency FB';
-  font-weight: 400;
-  letter-spacing: 0.05em;
-  color: #ffffff;
-}
-  .movie {
+  h2{
+    font-size: 45px;
+    font-family: 'Agency FB';
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: #ffffff;
+    padiding-left: 3rem ;
+    
+  }
+
+  .serie {
     display: flex;
     align-items: center;
     justify-content: center;
-    height: 100vh;
+    height: 90vh;
   }
+  
   img {
-    width: 19rem;
+    width: 24em;
     border-radius: 2rem;
-    margin-bottom: 3rem;
+    margin-top: 2rem;
     display: flex;
     box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.1);
   }
@@ -39,19 +42,19 @@ h2{
 
   span {
     font-weight: normal;
-    font-size: 160%;
+    font-size: 1.6em;
     text-align: justify;
     margin-bottom: 2.5rem;
     line-height: 130%;
     color: white;
-    font-family: 'Abel'
+    font-family: 'Abel';
   }
   .details {
     display: flex;
     flex-direction: column;
     align-items: flex-start;
     margin-left: 6rem;
-    max-width: 50%;
+    max-width: 45%;
   }
   button {
     background-color: #00ACB7;
@@ -74,14 +77,28 @@ h2{
     color: #00ACB7;
   }
 
+  @media (max-width: 1000px) {  
+    
+      .serie {
+        padding: 0        
+      }
+      
+    }
+  }
 `
 
 export const List = styled.ul`
     list-style: none;
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     column-gap: 3rem;
     row-gap: 4rem;
+    padding: 0 5rem;
+`
+
+export const Titulo = styled.div`
+    padding-left: 2.5em;
+
 `
 
 export const Cast = styled.li`
@@ -92,7 +109,7 @@ export const Cast = styled.li`
 
     #img{
         border-radius: 1rem;
-        width: 180px;
+        width: 12em;
         margin-bottom: 1rem;
         box-shadow: 0px 0px 25px rgba(255, 255, 255, 0.1);
     }
@@ -108,8 +125,9 @@ export const Cast = styled.li`
     #subtitle{
       font-family: 'Actor';
       font-style: normal;
-      font-size: 100%;
-      margin-top: -rem;
+      font-size: 1em;
+      margin-top: -0.5rem;
+      letter-spacing: 0.03em;
       color: rgba(255, 255, 255, 0.65);
    }
     a{

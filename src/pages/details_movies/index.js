@@ -1,9 +1,12 @@
 import { useState, useEffect } from 'react';
-import { Link, useParams } from 'react-router-dom';
-import { Container, List, Cast } from './styles';
+import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Container, List, Cast, Titulo } from './styles';
 import api from '../../api';
+import Header from '../../components/header';
+import Footer from "../../components/footer";
 
-function Details() {
+function DetailsMovies() {
+  const navigate = useNavigate();
   const { id } = useParams();
   const key = "ff291250303483e75869fe5f1ba0a178";
   const url = 'https://image.tmdb.org/t/p/w500';
@@ -48,6 +51,7 @@ function Details() {
 
   return (
     <Container> 
+      <Header/>
       <div className="movie">
         <div className='img'>
           <img src={`${posterPath(movie)}`} alt={movie.title}/>
@@ -55,12 +59,12 @@ function Details() {
         <div className="details">
           <h1>{movie.title}</h1>
           <span> {movie.overview}</span>
-          <Link to="/">
-              <button> Retornar </button>
-          </Link>
+          <button onClick={() => navigate(-1)}> Retornar </button>
         </div>
       </div>
-      <h2>Elenco</h2>
+      <Titulo>
+        <h2>Elenco</h2>
+      </Titulo>
        <List>
         {cast.map((event) =>{
             return(
@@ -75,8 +79,9 @@ function Details() {
             )
         })}
     </List> 
+    <Footer/>
     </Container>
   );
 }
 
-export default Details;
+export default DetailsMovies;

@@ -1,50 +1,42 @@
-import { Container, Titulo, List, Movie } from "./styles";
+import { Container, Titulo, List, Cast } from "./styles";
 import { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import Header from "../../components/header";
 import Footer from "../../components/footer";
 
-function Home(){
+function Persons(){
     const url = 'https://image.tmdb.org/t/p/w500';
     const key = 'ff291250303483e75869fe5f1ba0a178';
 
     const [populars, setPopulars] = useState([]);
     useEffect(() =>{
-        fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=pt-BR`)
+        fetch(`https://api.themoviedb.org/3/person/popular?api_key=${key}&language=pt-BR&page=1`)
         .then(response => response.json())
         .then(element => setPopulars(element.results))
     })
-
-    function mediaType(obj) {
-        if (obj.media_type === 'tv') {
-          return `/DetailsTv/`;
-        }
-        return `/DetailsMovies/`;
-    }
     
     return(
            <Container>
             <Header/>
             <Titulo>
-                <h1> Em alta</h1>
+                <h1> Populares</h1>
             </Titulo>
             <List>
                 {populars.map(populars=>{
                     return(
-                        <Movie key={populars.id}>
-                            <Link to={`${mediaType(populars)}${populars.id}`}>
-                                <img id="img" src={`${url}${populars.poster_path}`}/>
+                        <Cast key={populars.id}>
+                            <Link to={`/DetailsCast/${populars.id}`}>
+                                <img id="img" src={`${url}${populars.profile_path}`}>
+                                </img>
                             </Link>
-                            <span id="title"> {populars.title}</span>
-                            <span id="subtitle"> IMDB: {populars.vote_average} </span>
-                        </Movie>
+                            <span id="title"> {populars.name}</span>
+                        </Cast>
                     )
                 })}
             </List>
-
             <Footer/>
         </Container>
     )
 }
 
-export default Home;
+export default Persons;

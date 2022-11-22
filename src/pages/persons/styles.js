@@ -29,7 +29,7 @@ export const List = styled.ul`
 
 `
 
-export const Movie = styled.li`
+export const Cast = styled.li`
     display: flex;
     flex-direction: column;
     align-item: center;
@@ -47,14 +47,6 @@ export const Movie = styled.li`
         font-size: 155%;
         color: #00ACB7;
     }
-    #subtitle{
-        font-family: 'Actor';
-        font-style: normal;
-        font-size: 115%;
-        margin-top: 1rem;
-        color: rgba(255, 255, 255, 0.65);
-    }
-
     a{
         transition: all 0.3s;
     }

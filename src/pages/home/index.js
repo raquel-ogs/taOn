@@ -12,14 +12,25 @@ function Home(){
     useEffect(() =>{
         fetch(`https://api.themoviedb.org/3/trending/all/day?api_key=${key}&language=pt-BR`)
         .then(response => response.json())
-        .then(element => setPopulars(element.results))
+        .then(element => 
+            setPopulars(element.results)
+        )
+        
     })
+
 
     function mediaType(obj) {
         if (obj.media_type === 'tv') {
           return `/DetailsTv/`;
         }
         return `/DetailsMovies/`;
+    }
+
+    function title(obj) {
+        if (obj.media_type === 'tv') {
+          return obj.name;
+        }
+        return obj.title;
     }
     
     return(
@@ -35,7 +46,7 @@ function Home(){
                             <Link to={`${mediaType(populars)}${populars.id}`}>
                                 <img id="img" src={`${url}${populars.poster_path}`}/>
                             </Link>
-                            <span id="title"> {populars.title}</span>
+                            <span id="title"> {title(populars)}</span>
                             <span id="subtitle"> IMDB: {populars.vote_average} </span>
                         </Movie>
                     )
